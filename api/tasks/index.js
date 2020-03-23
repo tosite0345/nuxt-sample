@@ -10,8 +10,8 @@ app.get('/', (req, res) => { // eslint-disable-line
     database: 'nuxt'
   })
   conn.connect()
-  conn.query('select * from tasks;', (err, rows, fields) => {
-    if(err) {
+  conn.query('select * from tasks;', (err, rows) => {
+    if (err) {
       console.log(err)
     }
     const data = JSON.stringify(rows)
