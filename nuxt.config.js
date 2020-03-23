@@ -79,5 +79,8 @@ module.exports = {
     typeCheck: {
       eslint: true
     }
-  }
+  },
+  serverMiddleware: [
+    '~/api/index.js'
+  ]
 }
