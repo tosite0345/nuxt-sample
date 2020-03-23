@@ -74,5 +74,10 @@ module.exports = {
     */
     extend (config, ctx) { // eslint-disable-line
     }
+  },
+  typescript: {
+    typeCheck: {
+      eslint: true
+    }
   }
 }
