@@ -16,7 +16,7 @@
             <v-container>
               <v-row>
                 <v-col cols="12">
-                  <v-text-field label="task name*" required></v-text-field>
+                  <v-text-field label="task name*" v-model="newName" required></v-text-field>
                 </v-col>
               </v-row>
             </v-container>
@@ -40,16 +40,16 @@
   export default {
     data: () => ({
       rows: [],
-      dialog: false
+      dialog: false,
+      newName: ''
     }),
     async asyncData({app}) {
       const res = await app.$axios.$get('/api/tasks')
-      console.log(res)
       return {rows: res}
     },
     methods: {
       create() {
-        alert('create!')
+        this.$axios.$post('/api/tasks', {name: this.newName})
         this.dialog = false
       },
     }
