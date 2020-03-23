@@ -25,6 +25,22 @@ app.get('/', (req, res) => { // eslint-disable-line
 
 app.post('/', (req, res) => {
   console.log(req.body)
+  const mysql = require('mysql')
+  const conn = mysql.createConnection({
+    host: '127.0.0.1',
+    user: 'root',
+    password: '',
+    database: 'nuxt'
+  })
+  conn.connect()
+  conn.query('insert into tasks set ?;', req.body, (err) => {
+    if (err) {
+      console.log(err)
+    }
+    const data = JSON.stringify({response: 'ok'})
+    res.header('Content-Type', 'application/json; charset=utf-8')
+    res.send(data)
+  })
 })
 
 module.exports = {
